@@ -7,6 +7,7 @@ const data = (state = {}) => {
     return state;
 };
 
+//метод. меняющий store
 const reddit = (state = [
     {name: 'demo'},
     {name: 'hello'}
