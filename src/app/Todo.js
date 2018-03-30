@@ -1,12 +1,7 @@
 import React, { Component } from 'react'
-
-import {
-    Text,
-    View,
-    TextInput,
-    TouchableOpacity,
-    StyleSheet
-} from 'react-native'
+import { Text, View, StyleSheet } from 'react-native'
+import { TodoForm } from "./TodoForm"
+import { connect } from 'react-redux'
 
 export class Todo extends Component {
     constructor(){
@@ -28,13 +23,7 @@ export class Todo extends Component {
     render(){
         return(
             <View style={styles.container}>
-                <View style={styles.form}>
-                    <TextInput value={this.state.newTodo} onChangeText={this.handleChange.bind(this)} style={styles.input}/>
-                    <TouchableOpacity onPress={this.handlePress.bind(this)} style={styles.button}>
-                        <Text style={styles.buttonText}>ADD</Text>
-                    </TouchableOpacity>
-                </View>
-
+                <TodoForm handlePress={this.handlePress.bind(this)} handleChange={this.handleChange.bind(this)} value={this.state.newTodo}/>
                 <View style={styles.todos}>
                     {this.state.todos.map((todo, i) =>
                         <View style={styles.todo} key={i}>
@@ -51,26 +40,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 20
-    },
-    form: {
-        flexDirection: 'row'
-    },
-    input: {
-        flex: 0.7,
-        fontSize: 16
-    },
-    button: {
-        flex: 0.3,
-        backgroundColor: 'pink',
-        borderRadius: 5,
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: 40,
-    },
-    buttonText: {
-        fontSize: 16,
-        fontWeight: 'bold',
-        color: '#fff'
     },
     todos: {
         marginTop: 20
