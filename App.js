@@ -2,16 +2,11 @@ import React, { Component } from 'react';
 import {AppRegistry, StyleSheet} from 'react-native';
 import { Todo } from './src/app/Todo';
 import { Provider } from 'react-redux';
-import { store } from './src/app/store';
-
-//const Main = () => (<Todo />);
 
 export default class App extends Component {
     render() {
         return (
-            <Provider store={store}>
-              <Todo />
-            </Provider>
+            <Todo />
         );
     }
 }

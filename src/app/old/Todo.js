@@ -17,17 +17,40 @@ export class Todo extends Component {
         }
     }
 
+    componentWillMount(){
+        fetch('http://192.168.56.1:3000/todos', {
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+            .then( res => res.json() )
+            .then( todos => this.setState({todos}) )
+    }
+
     handleChange(text){
         this.setState({newTodo: text});
     }
     handlePress(){
-        const todos = [...this.state.todos, this.state.newTodo];
-        this.setState({todos, newTodo: ''});
+        fetch('http://192.168.56.1:3000/todos', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: this.state.newTodo
+            }),
+        })
+            .then(res => res.json())
+            .then(todo => {
+                const todos = [todo, ...this.state.todos];
+                this.setState({todos, newTodo: ''});
+            })
     }
-
     render(){
         return(
             <View style={styles.container}>
+                <Reddit posts = {this.state.posts}/>
                 <View style={styles.form}>
                     <TextInput value={this.state.newTodo} onChangeText={this.handleChange.bind(this)} style={styles.input}/>
                     <TouchableOpacity onPress={this.handlePress.bind(this)} style={styles.button}>
@@ -38,7 +61,7 @@ export class Todo extends Component {
                 <View style={styles.todos}>
                     {this.state.todos.map((todo, i) =>
                         <View style={styles.todo} key={i}>
-                            <Text style={styles.todoText}>{todo}</Text>
+                            <Text style={styles.todoText}>{todo.name}</Text>
                         </View>
                     )}
                 </View>
