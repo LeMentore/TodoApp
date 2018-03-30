@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 import {
     Text,
@@ -6,7 +6,7 @@ import {
     TextInput,
     TouchableOpacity,
     StyleSheet
-} from 'react-native';
+} from 'react-native'
 
 export class Todo extends Component {
     constructor(){
@@ -21,7 +21,7 @@ export class Todo extends Component {
         this.setState({newTodo: text});
     }
     handlePress(){
-        const todos = [...this.state.todos, this.state.newTodo];
+        const todos = [this.state.newTodo, ...this.state.todos];
         this.setState({todos, newTodo: ''});
     }
 
@@ -31,7 +31,7 @@ export class Todo extends Component {
                 <View style={styles.form}>
                     <TextInput value={this.state.newTodo} onChangeText={this.handleChange.bind(this)} style={styles.input}/>
                     <TouchableOpacity onPress={this.handlePress.bind(this)} style={styles.button}>
-                        <Text style={styles.buttonText}>create</Text>
+                        <Text style={styles.buttonText}>ADD</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -61,8 +61,7 @@ const styles = StyleSheet.create({
     },
     button: {
         flex: 0.3,
-        borderWidth: 1,
-        borderColor: 'blue',
+        backgroundColor: 'pink',
         borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'center',
@@ -70,7 +69,8 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         fontSize: 16,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        color: '#fff'
     },
     todos: {
         marginTop: 20
@@ -83,4 +83,4 @@ const styles = StyleSheet.create({
     todoText: {
         fontSize: 16
     }
-});
+})

@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import {AppRegistry, StyleSheet} from 'react-native';
-import { Todo } from './src/app/Todo';
-import { Provider } from 'react-redux';
+import React, { Component } from 'react'
+import {AppRegistry, StyleSheet} from 'react-native'
+import { Todo } from './src/app/Todo'
+import { Provider } from 'react-redux'
 
 export default class App extends Component {
     render() {
@@ -28,4 +28,4 @@ const styles = StyleSheet.create({
         color: '#333333',
         marginBottom: 5,
     },
-});
+})
