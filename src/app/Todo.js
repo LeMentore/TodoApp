@@ -24,8 +24,8 @@ export class Todo extends Component {
                 'Accept': 'application/json'
             }
         })
-            .then(res => res.json())
-            .then(todos => this.setState({todos}))
+            .then( res => res.json() )
+            .then( todos => this.setState({todos}) )
     }
 
     handleChange(text){
@@ -51,7 +51,7 @@ export class Todo extends Component {
     render(){
         return(
             <View style={styles.container}>
-                <Reddit />
+                <Reddit posts = {this.state.posts}/>
                 <View style={styles.form}>
                     <TextInput value={this.state.newTodo} onChangeText={this.handleChange.bind(this)} style={styles.input}/>
                     <TouchableOpacity onPress={this.handlePress.bind(this)} style={styles.button}>
