@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {AppRegistry, StyleSheet} from 'react-native'
-import { Todo } from './src/app/Todo'
+import { Main as Root } from './src/app/Main'
 import { Provider } from 'react-redux'
 import { store } from "./src/app/store";
 
@@ -8,7 +8,7 @@ export default class App extends Component {
     render() {
         return (
             <Provider store={store}>
-                <Todo />
+                <Root />
             </Provider>
         );
     }

@@ -16,8 +16,7 @@ export class Todo extends Component {
         this.setState({newTodo: text});
     }
     handlePress(){
-        const todos = [this.state.newTodo, ...this.state.todos];
-        this.setState({todos, newTodo: ''});
+        this.props.createTodo(this.state.newTodo)
     }
 
     render(){
@@ -35,6 +34,14 @@ export class Todo extends Component {
         )
     }
 }
+
+const mapDispatchToProps = (dispatch) => ({
+    createTodo(todo){
+        dispatch({type: 'CREATE_TODO', payload: todo})
+    }
+})
+
+export default connect(null, mapDispatchToProps)(Todo)
 
 const styles = StyleSheet.create({
     container: {
