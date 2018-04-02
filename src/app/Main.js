@@ -1,4 +1,11 @@
 import React from 'react'
-import  Todo  from "./Todo";
+import { View } from 'react-native'
+import TabView from 'react-native-scrollable-tab-view'
+import Todo  from "./Todo"
 
-export const Main = () => (<Todo/>)
+export const Main = () => (
+    <TabView>
+        <Todo tabLabel="Todos"/>
+        <View tabLabel="Other"></View>
+    </TabView>
+)
