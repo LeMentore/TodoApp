@@ -7,7 +7,6 @@ export class Todo extends Component {
     constructor(){
         super();
         this.state = {
-            todos: [],
             newTodo: ''
         }
     }
@@ -17,6 +16,7 @@ export class Todo extends Component {
     }
     handlePress(){
         this.props.createTodo(this.state.newTodo)
+        this.setState({newTodo: ''})
     }
 
     render(){
@@ -24,7 +24,7 @@ export class Todo extends Component {
             <View style={styles.container}>
                 <TodoForm handlePress={this.handlePress.bind(this)} handleChange={this.handleChange.bind(this)} value={this.state.newTodo}/>
                 <View style={styles.todos}>
-                    {this.state.todos.map((todo, i) =>
+                    {this.props.todos.map((todo, i) =>
                         <View style={styles.todo} key={i}>
                             <Text style={styles.todoText}>{todo}</Text>
                         </View>
@@ -34,6 +34,10 @@ export class Todo extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => ({
+    todos: state.todos
+})
 
 const mapDispatchToProps = (dispatch) => ({
     createTodo(todo){
