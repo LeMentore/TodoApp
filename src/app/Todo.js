@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import LinearGradient from 'react-native-linear-gradient'
-import { TodoForm } from "./TodoForm"
-import { createTodo, getTodos } from "./ActionCreators";
+import { TodoForm } from './TodoForm'
+import { createTodo, getTodos } from './ActionCreators'
 
 class Todo extends Component {
     constructor(){
@@ -47,7 +47,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     createTodo(todo){
-        dispatch(createTodo({name: todo}))
+        dispatch(createTodo({'name': todo}))
     },
     getTodos(){
         dispatch(getTodos())
