@@ -3,7 +3,7 @@ import { Text, View, StyleSheet } from 'react-native'
 import { TodoForm } from "./TodoForm"
 import { connect } from 'react-redux'
 
-export class Todo extends Component {
+class Todo extends Component {
     constructor(){
         super();
         this.state = {
@@ -45,7 +45,7 @@ const mapDispatchToProps = (dispatch) => ({
     }
 })
 
-export default connect(null, mapDispatchToProps)(Todo)
+export default connect(mapStateToProps, mapDispatchToProps)(Todo)
 
 const styles = StyleSheet.create({
     container: {
