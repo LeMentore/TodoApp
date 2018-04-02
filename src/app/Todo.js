@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
 import { TodoForm } from "./TodoForm"
 import { connect } from 'react-redux'
+import LinearGradient from 'react-native-linear-gradient'
 
 class Todo extends Component {
     constructor(){
@@ -21,7 +22,7 @@ class Todo extends Component {
 
     render(){
         return(
-            <View style={styles.container}>
+            <LinearGradient style={styles.container} colors={["#fff", "#05B7D9"]}>
                 <TodoForm handlePress={this.handlePress.bind(this)} handleChange={this.handleChange.bind(this)} value={this.state.newTodo}/>
                 <View style={styles.todos}>
                     {this.props.todos.map((todo, i) =>
@@ -30,7 +31,7 @@ class Todo extends Component {
                         </View>
                     )}
                 </View>
-            </View>
+            </LinearGradient>
         )
     }
 }
