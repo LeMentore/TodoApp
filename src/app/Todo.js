@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet } from 'react-native'
-import { TodoForm } from "./TodoForm"
 import { connect } from 'react-redux'
 import LinearGradient from 'react-native-linear-gradient'
+import { TodoForm } from "./TodoForm"
+import { createTodo, getTodos } from "./ActionCreators";
 
 class Todo extends Component {
     constructor(){
@@ -10,6 +11,10 @@ class Todo extends Component {
         this.state = {
             newTodo: ''
         }
+    }
+
+    componentDidMount(){
+        this.props.getTodos()
     }
 
     handleChange(text){
@@ -27,7 +32,7 @@ class Todo extends Component {
                 <View style={styles.todos}>
                     {this.props.todos.map((todo, i) =>
                         <View style={styles.todo} key={i}>
-                            <Text style={styles.todoText}>{todo}</Text>
+                            <Text style={styles.todoText}>{todo.name}</Text>
                         </View>
                     )}
                 </View>
@@ -42,7 +47,10 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     createTodo(todo){
-        dispatch({type: 'CREATE_TODO', payload: todo})
+        dispatch(createTodo({name: todo}))
+    },
+    getTodos(){
+        dispatch(getTodos())
     }
 })
 
