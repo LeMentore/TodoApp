@@ -12,7 +12,7 @@ export const getTodos = () => (
     )
 )
 
-export const createTodo = (todo) = (
+export const createTodo = (todo) => (
     dispatch => (
         fetch('http://172.22.12.227:3000/todos', {
             method: 'POST',
